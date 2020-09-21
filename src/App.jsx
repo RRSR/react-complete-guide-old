@@ -11,6 +11,13 @@ class App extends Component {
         ],
         country: 'India'
     }
+    myStyle = {
+        backgroundColor: 'white',
+        font: 'inherit',
+        border: '1px solid red',
+        padding: '8px',
+        cursor: 'pointer'
+    };
 
     switchNameHandler = (newName) => {
         this.setState({
@@ -21,6 +28,7 @@ class App extends Component {
             ]
         })
     }
+
     nameChangeHandler = (event) => {
         this.setState({
             personList: [
@@ -31,13 +39,15 @@ class App extends Component {
         })
     };
 
-
     render() {
         return (
             <div className="App">
                 <h1>Hi, I'm a React App</h1>
                 {/*Not so recommended approach due to performance issue */}
-                <button onClick={() => this.switchNameHandler('Raj Rajeshwar')}>Switch Name</button>
+                <button
+                    style={this.myStyle}
+                    onClick={() => this.switchNameHandler('Raj Rajeshwar')}>Switch Name
+                </button>
                 <Person
                     name={this.state.personList[0].name}
                     age={this.state.personList[0].age}>Some more details of the person.</Person>
