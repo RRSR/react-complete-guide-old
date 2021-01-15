@@ -46,6 +46,29 @@ class App extends Component {
     }
 
     render() {
+
+        let persons = null;
+        if (this.state.showPersons) {
+            persons = (
+                <div>
+                    <Person
+                        name={this.state.personList[0].name}
+                        age={this.state.personList[0].age}>Some more details of the person.</Person>
+                    <Person
+                        name={this.state.personList[1].name}
+                        age={this.state.personList[1].age}
+                        //Recommended approach
+                        myClick={this.switchNameHandler.bind(this, 'Raj Rathore')}
+                        myChange={this.nameChangeHandler}
+                    />
+                    <Person
+                        name={this.state.personList[2].name}
+                        age={this.state.personList[2].age}/>
+                    <label>Person State : {this.state.country}</label><br/>
+                </div>
+            );
+        }
+
         return (
             <div className="App">
                 <h1>Hi, I'm a React App</h1>
@@ -54,26 +77,7 @@ class App extends Component {
                     style={this.myStyle}
                     onClick={() => this.togglePersonsHandler()}>Switch Name
                 </button>
-                {
-                    this.state.showPersons ?
-                        <div>
-                            <Person
-                                name={this.state.personList[0].name}
-                                age={this.state.personList[0].age}>Some more details of the person.</Person>
-                            <Person
-                                name={this.state.personList[1].name}
-                                age={this.state.personList[1].age}
-                                //Recommended approach
-                                myClick={this.switchNameHandler.bind(this, 'Raj Rathore')}
-                                myChange={this.nameChangeHandler}
-                            />
-                            <Person
-                                name={this.state.personList[2].name}
-                                age={this.state.personList[2].age}/>
-                            <label>Person State : {this.state.country}</label><br/>
-                        </div>
-                        : null
-                }
+                {persons}
             </div>
         );
     }
