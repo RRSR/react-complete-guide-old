@@ -20,14 +20,10 @@ class App extends Component {
         cursor: 'pointer'
     };
 
-    switchNameHandler = (newName) => {
-        this.setState({
-            personList: [
-                {name: newName, age: 101},
-                {name: 'Hari', age: 91},
-                {name: 'Jai Singh', age: 21}
-            ]
-        })
+    deleteNameHandler = (personIndex) => {
+        const persons = this.state.personList;
+        persons.splice(personIndex, 1);
+        this.setState({personList: persons})
     }
 
     nameChangeHandler = (event) => {
@@ -51,8 +47,9 @@ class App extends Component {
         if (this.state.showPersons) {
             persons = (
                 <div>
-                    {this.state.personList.map(person => {
+                    {this.state.personList.map((person, index) => {
                             return <Person
+                                myClick={() => this.deleteNameHandler(index)}
                                 name={person.name}
                                 age={person.age}/>
                         }
