@@ -21,7 +21,8 @@ class App extends Component {
     };
 
     deleteNameHandler = (personIndex) => {
-        const persons = this.state.personList;
+        // const persons = this.state.personList.slice(); Mutable as it changes the original list itself because it's just a reference.
+        const persons = [...this.state.personList]; // Immutable as it creates a new copy using spread operator.
         persons.splice(personIndex, 1);
         this.setState({personList: persons})
     }
