@@ -5,9 +5,9 @@ import Person from "./Person/Person";
 class App extends Component {
     state = {
         personList: [
-            {name: 'Raj', age: 20},
-            {name: 'Hari', age: 29},
-            {name: 'Jai', age: 33}
+            {id: 101, name: 'Raj', age: 20},
+            {id: 102, name: 'Hari', age: 29},
+            {id: 103, name: 'Jai', age: 33}
         ],
         country: 'India',
         showPersons: false
@@ -20,7 +20,7 @@ class App extends Component {
         cursor: 'pointer'
     };
 
-    deleteNameHandler = (personIndex) => {
+    deletePersonHandler = (personIndex) => {
         // const persons = this.state.personList.slice(); Mutable as it changes the original list itself because it's just a reference.
         const persons = [...this.state.personList]; // Immutable as it creates a new copy using spread operator.
         persons.splice(personIndex, 1);
@@ -50,9 +50,10 @@ class App extends Component {
                 <div>
                     {this.state.personList.map((person, index) => {
                             return <Person
-                                myClick={() => this.deleteNameHandler(index)}
+                                myClick={() => this.deletePersonHandler(index)}
                                 name={person.name}
-                                age={person.age}/>
+                                age={person.age}
+                                key={person.id}/>
                         }
                     )}
                 </div>
