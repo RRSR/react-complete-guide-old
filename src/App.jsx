@@ -12,13 +12,6 @@ class App extends Component {
         country: 'India',
         showPersons: false
     }
-    myStyle = {
-        backgroundColor: 'white',
-        font: 'inherit',
-        border: '1px solid red',
-        padding: '8px',
-        cursor: 'pointer'
-    };
 
     deletePersonHandler = (personIndex) => {
         // const persons = this.state.personList.slice(); Mutable as it changes the original list itself because it's just a reference.
@@ -52,6 +45,15 @@ class App extends Component {
 
     render() {
 
+        const myStyle = {
+            backgroundColor: 'green',
+            color: 'white',
+            font: 'inherit',
+            border: '1px solid red',
+            padding: '8px',
+            cursor: 'pointer'
+        };
+
         let persons = null;
         if (this.state.showPersons) {
             persons = (
@@ -67,6 +69,7 @@ class App extends Component {
                     )}
                 </div>
             );
+            myStyle.backgroundColor = 'red';
         }
 
         return (
@@ -74,7 +77,7 @@ class App extends Component {
                 <h1>Hi, I'm a React App</h1>
                 {/*Not so recommended approach due to performance issue */}
                 <button
-                    style={this.myStyle}
+                    style={myStyle}
                     onClick={() => this.togglePersonsHandler()}>Switch Name
                 </button>
                 {persons}
