@@ -72,9 +72,17 @@ class App extends Component {
             myStyle.backgroundColor = 'red';
         }
 
+        const classes = [];
+        if (this.state.personList.length <= 2) {
+            classes.push('red');
+        }
+        if (this.state.personList.length <= 1) {
+            classes.push('bold');
+        }
+
         return (
-            <div className="App">
-                <h1>Hi, I'm a React App</h1>
+            <div className='App'>
+                <p className={classes.join(' ')}>Hi, I'm a React App</p>
                 {/*Not so recommended approach due to performance issue */}
                 <button
                     style={myStyle}
